@@ -1,20 +1,21 @@
 import React from 'react';
 import {useSelector} from "react-redux";
-import moment from 'moment';
+import {Box, Typography} from "@mui/material";
+
 
 const City = () => {
     const forecastData = useSelector(state => state.forecast.data)
-    const dateNow = moment().format("dddd HH:mm ");
 
     return (
         <>
             {
                 forecastData ?
 
-                    <div>
-                        <h2>{forecastData.city.name}</h2>
-                        <p>{dateNow}</p>
-                    </div>
+                    <Box component="div" sx={{display:'flex', justifyContent:'center'}}>
+                        <Typography variant="h5" component="h5">
+                            {forecastData.city.name}
+                        </Typography>
+                    </Box>
 
                     : null
             }

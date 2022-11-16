@@ -1,26 +1,45 @@
 import React from 'react';
 import {useSelector} from "react-redux";
+import moment from "moment";
+import {Box, CardContent, CardMedia, Typography} from "@mui/material";
 
 const WeatherToday = () => {
-    const weatherData = useSelector(state => state.weather.data)
+    const weatherData = useSelector(state => state.weather.data);
+    const dateNow = moment().format("dddd HH:mm ");
 
     return (
         <>
             {
                 weatherData ?
 
-                    <ul>
-                        <li><p>{Math.round(weatherData.main.temp)} ℃</p></li>
-                        <li><p>Wind: {Math.round(weatherData.wind.speed)} km/h</p></li>
-                        <li><p>Humidity: {Math.round(weatherData.main.humidity)} %</p></li>
-                        {weatherData.weather.map(({id, icon, main, description}) => (
-                            <li key={id}>
-                                <img src={`https://openweathermap.org/img/wn/${icon}@2x.png`} alt={description}/>
-                                <p>{main}</p>
-                            </li>
-                        ))
-                        }
-                    </ul>
+                    <CardContent sx={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                        <Box component="div">
+                            {weatherData.weather.map(({id, icon, main, description}) => (
+                                <div key={id}>
+                                    <CardMedia
+                                        component="img"
+                                        height="100"
+                                        image={`https://openweathermap.org/img/wn/${icon}@2x.png`}
+                                        alt={main}
+                                    />
+                                </div>
+                            ))
+                            }
+                        </Box>
+
+                        <Box component="div">
+                            <Typography variant="h6" component="p">{dateNow}</Typography>
+                            <Typography variant="h5" component="h5" color="text.secondary">
+                                {Math.round(weatherData.main.temp)} ℃
+                            </Typography>
+                            <Typography variant="body1" component="p" color="text.secondary">
+                                Wind: {Math.round(weatherData.wind.speed)} km/h
+                            </Typography>
+                            <Typography variant="body1" component="p" color="text.secondary">
+                                Humidity: {Math.round(weatherData.main.humidity)} %
+                            </Typography>
+                        </Box>
+                    </CardContent>
 
                     : null
             }
