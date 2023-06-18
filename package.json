@@ -1,15 +1,15 @@
 {
-  "name": "weather_webside",
+  "name": "weather_website",
   "version": "0.1.0",
-  "homepage": "https://Alena-Abharian.github.io/weather_webside",
+  "homepage": "https://Alena-Abharian.github.io/weather_website",
   "private": true,
   "author": "Alena Abharian <alenar2531@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Alena-Abharian/weather_webside.git"
+    "url": "git+https://github.com/Alena-Abharian/weather_website.git"
   },
   "bugs": {
-    "url": "https://github.com/Alena-Abharian/weather_webside/issues"
+    "url": "https://github.com/Alena-Abharian/weather_website/issues"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
