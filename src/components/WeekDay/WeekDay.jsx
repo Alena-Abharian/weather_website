@@ -2,6 +2,8 @@ import React from 'react';
 import {useSelector} from "react-redux";
 import {Box, CardContent, CardMedia, Typography} from "@mui/material";
 
+import s from "./WeekDay.module.scss"
+
 const WeekDay = () => {
     const dayData = useSelector(state => state.forecast.selectedDay)
     const weekDay = useSelector(state => state.forecast.weekDay)
@@ -16,7 +18,7 @@ const WeekDay = () => {
                                 <div key={id}>
                                     <CardMedia
                                         component="img"
-                                        height="100"
+                                        height="300"
                                         image={`https://openweathermap.org/img/wn/${icon}@2x.png`}
                                         alt={main}
                                     />
@@ -25,7 +27,7 @@ const WeekDay = () => {
                             }
                         </Box>
                         <Box component="div">
-                            <Typography variant="h6" component="p">{weekDay}</Typography>
+                            <Typography className={s.day} variant="h6" component="p">{weekDay}</Typography>
                             <Typography variant="h5" component="h5" color="text.secondary">
                                 {Math.round(dayData.main.temp)} ℃
                             </Typography>

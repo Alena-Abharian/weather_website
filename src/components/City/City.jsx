@@ -1,6 +1,8 @@
 import React from 'react';
 import {useSelector} from "react-redux";
-import {Box, Typography} from "@mui/material";
+import {Box} from "@mui/material";
+
+import s from "./City.module.scss"
 
 
 const City = () => {
@@ -12,9 +14,9 @@ const City = () => {
                 forecastData ?
 
                     <Box component="div" sx={{display:'flex', justifyContent:'center'}}>
-                        <Typography variant="h5" component="h5">
+                        <h5 className={s.city} >
                             {forecastData.city.name}
-                        </Typography>
+                        </h5>
                     </Box>
 
                     : null

@@ -3,6 +3,8 @@ import {useSelector} from "react-redux";
 import moment from "moment";
 import {Box, CardContent, CardMedia, Typography} from "@mui/material";
 
+import s from "./WeatherToday.module.scss"
+
 const WeatherToday = () => {
     const weatherData = useSelector(state => state.weather.data);
     const dateNow = moment().format("dddd HH:mm ");
@@ -18,7 +20,7 @@ const WeatherToday = () => {
                                 <div key={id}>
                                     <CardMedia
                                         component="img"
-                                        height="100"
+                                        height="300"
                                         image={`https://openweathermap.org/img/wn/${icon}@2x.png`}
                                         alt={main}
                                     />
@@ -28,7 +30,7 @@ const WeatherToday = () => {
                         </Box>
 
                         <Box component="div">
-                            <Typography variant="h6" component="p">{dateNow}</Typography>
+                            <Typography className={s.today} variant="h6" component="p">{dateNow}</Typography>
                             <Typography variant="h5" component="h5" color="text.secondary">
                                 {Math.round(weatherData.main.temp)} ℃
                             </Typography>

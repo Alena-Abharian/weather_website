@@ -2,7 +2,9 @@ import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import moment from "moment";
 import {selectedDayItem, weekDayItem} from '../../redux/forecast/forecastSlice'
-import {Card, CardContent, CardMedia, Grid, Typography} from "@mui/material";
+import {CardContent, CardMedia, Grid, Typography} from "@mui/material";
+
+import s from './WeekWeatherList.module.scss';
 
 const WeekWeatherList = () => {
     const forecastData = useSelector(state => state.forecast.data);
@@ -31,23 +33,30 @@ const WeekWeatherList = () => {
                                   key={dt}
                                   onClick={() => onHandlerDay(dt, forecastDays[i])}
                             >
-                                <Card sx={{cursor: "pointer"}}>
-                                    <CardContent>
-                                        <Typography variant="h6" component="div">
-                                            {forecastDays[i]}
-                                        </Typography>
-
-                                        <Typography variant="body2" color="text.secondary">
-                                            {Math.round(temp)} ℃
-                                        </Typography>
-                                    </CardContent>
+                                <div className={s.card}>
                                     <CardMedia
                                         component="img"
                                         height="150"
                                         image={`https://openweathermap.org/img/wn/${icon}@2x.png`}
                                         alt={main}
                                     />
-                                </Card>
+                                    <CardContent>
+                                        <Typography
+                                            variant="body2"
+                                            color="text.secondary"
+                                            sx={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}
+                                        >
+                                            {Math.round(temp)} ℃
+                                        </Typography>
+                                        <Typography
+                                            variant="h6"
+                                            component="div"
+                                            sx={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}
+                                        >
+                                            {forecastDays[i]}
+                                        </Typography>
+                                    </CardContent>
+                                </div>
                             </Grid>
                         ))
                         }

@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import {useDispatch} from "react-redux";
 import {getForecast} from "../../redux/forecast/forecastOperations";
 import {getWeatherToday} from "../../redux/weather/weatherOperations";
-import {TextField} from "@mui/material";
+
+import s from "./Search.module.scss";
 
 const Search = () => {
     const [search, setSearch] = useState()
@@ -21,12 +22,7 @@ const Search = () => {
     return (
         <>
             <form onSubmit={onHandlerSubmit}>
-                <TextField label="Search"
-                           variant="standard"
-                           fullWidth
-                           type='search'
-                           onChange={onHandleQuery}
-                />
+                <input className={s.form} onChange={onHandleQuery} type="search" placeholder="Search"/>
             </form>
         </>
 
